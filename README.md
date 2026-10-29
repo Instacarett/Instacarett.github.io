@@ -1,9 +1,9 @@
 <img src="/images/limework_vertical_white_solid.png" width="150"/>
 
-# Limework's Offical Website
+# Instacare's Offical Website
 
 <p>
-We limin'🍋‍🟩🇹🇹 .....but in a different way!
+Care, Instantly
 <br>
-Contact: support@limeworktt.com
+Contact: support@instacarett.com
 </p>
