@@ -112,7 +112,7 @@
         '<p class="cookie_banner_title"><svg class="cookie_banner_icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.8 13A9 9 0 1 1 11 3.1a4 4 0 0 0 4.9 4.8 4 4 0 0 0 4.9 5.1Z"/><circle cx="8" cy="9" r="1"/><circle cx="7" cy="15" r="1"/><circle cx="13" cy="16" r="1"/><circle cx="12" cy="11" r=".7"/></svg><span>Your Privacy Matters</span></p>',
         '<button class="cookie_banner_toggle" type="button" aria-expanded="false" aria-controls="cookie-banner-description" aria-label="Expand cookie description"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>',
         '</div>',
-        '<p id="cookie-banner-description" hidden>With your permission, Limework uses Google Analytics to understand visits, approximate locations, popular pages and how people find this site. Analytics stays off unless you accept. You can change your choice on the Legal &amp; Policies page.</p>',
+        '<p id="cookie-banner-description" hidden>With your permission, instacare uses Google Analytics to understand visits, approximate locations, popular pages and how people find this site. Analytics stays off unless you accept. You can change your choice on the Legal &amp; Policies page.</p>',
         '<a href="/legal/">Cookies &amp; Privacy Details</a>',
         '</div>',
         '<div class="cookie_banner_actions">',
