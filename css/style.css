@@ -1900,3 +1900,55 @@ a.consultation_button_secondary.instacare_cta .cta_icon {
 }
 @media (prefers-reduced-motion: reduce) { .journey_callout::before { animation: none; } }
 @media (prefers-reduced-transparency: reduce) { .journey_glass { background: #23465e; -webkit-backdrop-filter: none; backdrop-filter: none; } }
+
+/* Doctor benefits share a single row on desktop. */
+.doctor_benefits { max-width: 1440px; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.doctor_benefits article { padding: clamp(22px, 2.4vw, 36px); }
+.doctor_benefits h2 { font-size: clamp(21px, 2vw, 25px); }
+@media (max-width: 1000px) { .doctor_benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .doctor_benefits { grid-template-columns: 1fr; } }
+
+/* Full-screen doctor introduction with drifting blue light and glass benefits. */
+.doctor_intro_animation {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 100svh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 112px 0 56px;
+    background: #061827;
+    color: #fff;
+}
+.doctor_intro_animation::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -45%;
+    background: radial-gradient(ellipse at 25% 40%, rgba(37,150,190,.8), transparent 35%), radial-gradient(ellipse at 70% 65%, rgba(255,255,255,.3), transparent 28%), linear-gradient(125deg, transparent 35%, rgba(37,150,190,.45) 48%, transparent 60%);
+    filter: blur(30px);
+    animation: journey-mesh 14s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+.doctor_intro_animation .page_intro { padding-top: 24px; padding-bottom: 44px; }
+.doctor_intro_animation .page_intro > p:last-child { color: #e0edf5; }
+.doctor_intro_animation .consultation_eyebrow { color: #8bdaf4; }
+.doctor_intro_animation .doctor_benefits { width: 100%; box-sizing: border-box; padding-bottom: 0; }
+.doctor_intro_animation .doctor_benefits article {
+    background: linear-gradient(125deg, rgba(255,255,255,.22), rgba(255,255,255,.06) 45%, rgba(225,245,250,.12));
+    -webkit-backdrop-filter: blur(20px) saturate(155%);
+    backdrop-filter: blur(20px) saturate(155%);
+    box-shadow: 0 16px 40px rgba(0,12,26,.14);
+}
+.doctor_intro_animation .doctor_benefits h2,
+.doctor_intro_animation .doctor_benefits p,
+.doctor_intro_animation .service_number { color: #fff; }
+@media (max-width: 800px) {
+    .doctor_intro_animation { padding-top: 88px; }
+}
+@media (prefers-reduced-motion: reduce) { .doctor_intro_animation::before { animation: none; } }
+@media (prefers-reduced-transparency: reduce) {
+    .doctor_intro_animation .doctor_benefits article { background: #23465e; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
