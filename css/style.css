@@ -14,8 +14,8 @@ body {
 }
 
 /* Match the browser canvas to the final footer, including subpixel edges and overscroll. */
-html{background-color:#fff}
-body{margin:0;background-color:#e5e5e5}
+html{background-color:#000}
+body{margin:0;background-color:#fff}
 
 .main_color{
     color: #2596be;
@@ -256,8 +256,9 @@ body{margin:0;background-color:#e5e5e5}
     width: 100%;
     box-sizing: border-box;
     margin: 0;
-    background-color: white;
-    color: black;
+    border-top: 1px solid #fff;
+    background-color: #000;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -996,9 +997,9 @@ a{
     max-width: 100%;
     padding: 0;
     margin-bottom: 12px;
-    background: #fff;
+    background: transparent;
     border: 2px solid #fff;
-    border-radius: 14px;
+    border-radius: 10px;
 }
 
 /* Homepage medical advice call to action. */
@@ -1124,7 +1125,7 @@ a{
 .care_hero_insertion { position: relative; display: inline-block; }
 .care_hero_insertion svg {
     position: absolute;
-    top: calc(100% - 11px);
+    top: calc(100% + 3px);
     right: -13px;
     width: 20px;
     height: 17px;
@@ -1161,3 +1162,741 @@ a{
 .home_page .home_section2 .title2,
 .home_page .home_section2 .coming_soon_above_title,
 .home_page .home_section2 .cursive_subscript { color: #17384d; }
+
+/* The hero brand is repeated only on mobile; desktop already has the navigation logo. */
+@media (min-width: 801px) {
+    .care_hero_logo { display: none; }
+}
+
+/* Consultation journey: an image-led introduction and four clear steps. */
+.consultation_page { background: #fff; color: #17384d; font-family: "Montserrat", sans-serif; }
+.consultation_hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: clamp(32px, 5vw, 88px); align-items: center; max-width: 1480px; min-height: calc(100svh - 100px); box-sizing: border-box; margin: auto; padding: 64px clamp(24px, 4vw, 64px) 80px; }
+.consultation_visual img { display: block; width: 100%; height: auto; max-height: 790px; object-fit: contain; }
+.consultation_visual > p { margin: 16px 0 0; color: #657782; font-size: 10px; line-height: 1.6; text-align: center; }
+.consultation_eyebrow { margin: 0 0 16px; color: #2596be; font-size: 15px; font-weight: 650; }
+.consultation_content h1 { margin: 0; font-family: inherit; font-size: clamp(34px, 3.3vw, 52px); font-weight: 800; line-height: 1.15; letter-spacing: -.04em; }
+.consultation_content h1 span { color: #2596be; }
+.consultation_intro { margin: 24px 0 30px; color: #526570; font-size: 17px; line-height: 1.75; }
+.consultation_steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 28px; list-style: none; padding: 0; margin: 0 0 34px; }
+.consultation_number { display: block; color: #b9ccd5; font-size: 38px; line-height: 1.1; font-weight: 700; margin-bottom: 10px; }
+.consultation_steps h2 { font-family: inherit; font-size: 18px; line-height: 1.35; font-weight: 750; margin: 0 0 8px; }
+.consultation_steps p { font-size: 14px; color: #526570; line-height: 1.7; margin: 0; }
+.consultation_actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.consultation_button { display: inline-flex; align-items: center; justify-content: center; gap: 20px; min-height: 50px; box-sizing: border-box; padding: 12px 23px; border: 1px solid #2596be; border-radius: 14px; background: #2596be; color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; }
+.consultation_button_secondary { background: #fff; border-color: #c9d9df; color: #17384d; }
+.consultation_button:hover { background: #1d4e89; border-color: #1d4e89; color: #fff; }
+.consultation_button:focus-visible { outline: 3px solid #1d4e89; outline-offset: 4px; }
+.consultation_launch_note { font-size: 11px; color: #657782; margin: 16px 0 0; line-height: 1.6; }
+.consultation_support { padding: 72px 24px 80px; background: #edf8fc; text-align: center; }
+.consultation_support h2 { margin: 0; font: 800 clamp(30px, 4vw, 46px)/1.2 "Montserrat", sans-serif; letter-spacing: -.035em; }
+.consultation_support > p:not(.consultation_eyebrow) { max-width: 580px; margin: 24px auto 28px; color: #526570; font-size: 16px; line-height: 1.8; }
+@media (max-width: 800px) {
+    .consultation_hero { grid-template-columns: 1fr; padding: 36px 24px 56px; gap: 36px; }
+    .consultation_content { grid-row: 1; }
+    .consultation_visual { max-width: 520px; margin: auto; }
+}
+@media (max-width: 440px) {
+    .consultation_steps { gap: 26px 18px; }
+    .consultation_steps h2 { font-size: 16px; }
+    .consultation_steps p { font-size: 13px; }
+    .consultation_actions { flex-direction: column; }
+}
+
+/* Homepage glass panel floating over a soft atmospheric gradient. */
+.home_page .care_hero:has(.care_hero_glass) {
+    display: flex;
+    align-items: center;
+    padding: 120px clamp(16px, 3vw, 48px) 48px;
+    background: radial-gradient(ellipse at 76% 30%, #a9d9f4 0%, transparent 53%), radial-gradient(ellipse at 15% 80%, #d1eae6 0%, transparent 55%), linear-gradient(135deg, #edf5fc, #e7e9f8);
+}
+.care_hero_glass {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(28px, 4vw, 72px);
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+    padding: clamp(28px, 4vw, 64px);
+    box-sizing: border-box;
+    border: 1px solid rgba(255,255,255,.85);
+    border-radius: 38px;
+    background: linear-gradient(120deg, rgba(255,255,255,.58), rgba(255,255,255,.2));
+    -webkit-backdrop-filter: blur(24px) saturate(135%);
+    backdrop-filter: blur(24px) saturate(135%);
+    box-shadow: inset 0 1px 1px #fff, inset 0 -1px 1px rgba(255,255,255,.45), 0 24px 70px rgba(45,90,125,.1);
+}
+.care_hero_glass .care_hero_content { grid-column: 1; grid-row: 1; }
+.home_page .care_hero_glass .care_hero_consultation {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    max-width: 580px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    aspect-ratio: auto;
+}
+.care_hero_consultation img { display: block; width: 100%; height: auto; max-height: 650px; object-fit: contain; }
+.care_hero_glass h1 { font-size: clamp(48px, 5.4vw, 88px); }
+@media (max-width: 800px) {
+    .home_page .care_hero:has(.care_hero_glass) { padding: 82px 14px 28px; }
+    .care_hero_glass { grid-template-columns: minmax(0, 1fr); padding: 32px 22px; border-radius: 28px; gap: 36px; }
+    .home_page .care_hero_glass .care_hero_consultation { grid-column: 1; grid-row: 2; max-width: 440px; }
+}
+@media (prefers-reduced-transparency: reduce) {
+    .care_hero_glass { background: #f2f8fc; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* Original animated blue aura treatment, inspired by the linked preview. */
+.care_hero_glass {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #061827;
+    color: #fff;
+    border-color: rgba(180,228,255,.55);
+}
+.care_hero_glass::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset: -30%;
+    background:
+        radial-gradient(ellipse at 65% 40%, transparent 24%, rgba(255,255,255,.8) 25%, rgba(37,150,190,.65) 27%, transparent 30%),
+        radial-gradient(ellipse at 45% 60%, transparent 28%, rgba(37,150,190,.65) 29%, rgba(255,255,255,.4) 32%, transparent 35%),
+        radial-gradient(ellipse at 68% 72%, #2596be, transparent 42%);
+    filter: blur(15px);
+    transform: rotate(-15deg);
+    animation: instacare-aura-drift 10s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+.care_hero_glass::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(2,13,25,.88), rgba(2,13,25,.56) 48%, rgba(2,13,25,.12));
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.45);
+    border-radius: inherit;
+    pointer-events: none;
+}
+.care_hero_glass h1 { color: #fff; }
+.care_hero_glass h1 span { color: #76d6f4; }
+.care_hero_glass .care_hero_description { color: #e0edf5; }
+.care_hero_glass .care_hero_annotation,
+.care_hero_glass .care_hero_insertion svg { color: #8bdaf4; }
+.care_hero_glass .care_hero_button:focus-visible { outline-color: #fff; }
+@keyframes instacare-aura-drift {
+    from { transform: translate(-3%, -2%) rotate(-15deg) scale(1); }
+    to { transform: translate(6%, 4%) rotate(8deg) scale(1.12); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .care_hero_glass::before { animation: none; }
+}
+
+/* Keep the animated panel framed by a clean white hero. */
+.home_page .care_hero:has(.care_hero_glass) { background: #fff; }
+@media (min-width: 801px) {
+    .home_page .care_hero_glass .care_hero_consultation { grid-column: 1; }
+    .care_hero_glass .care_hero_content { grid-column: 2; }
+}
+@media (min-width: 801px) {
+    .care_hero_glass::after { background: linear-gradient(90deg, rgba(2,13,25,.12), rgba(2,13,25,.56) 48%, rgba(2,13,25,.88)); }
+}
+
+/* Let the aura fill the hero while retaining the inset glass panel. */
+.home_page .care_hero:has(.care_hero_glass) {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #061827;
+}
+.home_page .care_hero:has(.care_hero_glass)::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -30%;
+    background:
+        radial-gradient(ellipse at 65% 40%, transparent 24%, rgba(255,255,255,.8) 25%, rgba(37,150,190,.65) 27%, transparent 30%),
+        radial-gradient(ellipse at 45% 60%, transparent 28%, rgba(37,150,190,.65) 29%, rgba(255,255,255,.4) 32%, transparent 35%),
+        radial-gradient(ellipse at 68% 72%, #2596be, transparent 42%);
+    filter: blur(15px);
+    animation: instacare-aura-drift 10s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+.care_hero_glass { background: rgba(6,24,39,.3); }
+.care_hero_glass::before { content: none; }
+@media (prefers-reduced-motion: reduce) {
+    .home_page .care_hero:has(.care_hero_glass)::before { animation: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+    .care_hero_glass { background: #061827; }
+}
+
+/* Match the hero panel to the navigation's lighter glass tint. */
+.care_hero_glass {
+    background: linear-gradient(125deg, rgba(255,255,255,.22), rgba(255,255,255,.06) 45%, rgba(225,245,250,.12));
+    border: 0;
+    box-shadow: 0 16px 48px rgba(0,12,26,.16);
+    -webkit-backdrop-filter: blur(16px) saturate(155%);
+    backdrop-filter: blur(16px) saturate(155%);
+}
+.care_hero_glass::after { background: none; box-shadow: none; }
+@media (prefers-reduced-transparency: reduce) {
+    .care_hero_glass { background: #23465e; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* Borderless navigation with white labels over the hero background. */
+.desktop_nav,
+.mobile_nav_menu,
+.mobile_nav_toggle {
+    border: 0;
+    box-shadow: 0 10px 30px rgba(20,60,80,.12), 0 2px 6px rgba(20,60,80,.06);
+}
+.desktop_nav::before { content: none; }
+.desktop_nav .desktop_nav_item,
+.desktop_nav .desktop_nav_cta,
+.mobile_nav_menu .mobile_nav_item,
+.mobile_nav_menu .mobile_nav_cta { color: #fff; }
+.desktop_nav .desktop_nav_cta,
+.mobile_nav_menu .mobile_nav_cta { border: 0; box-shadow: 0 3px 12px rgba(20,60,80,.08); }
+.mobile_nav_toggle span { background: #fff; }
+
+/* Section-aware label contrast for the floating navigation. */
+.desktop_nav_container { --nav-label: #17384d; }
+.desktop_nav_container[data-contrast="light"] { --nav-label: #fff; }
+.desktop_nav_container .desktop_nav .desktop_nav_item,
+.desktop_nav_container .desktop_nav .desktop_nav_cta { color: var(--nav-label); transition: color 180ms ease; }
+.desktop_nav_container .mobile_nav_toggle span { background: var(--nav-label); }
+/* The open drawer has its own consistent light glass surface. */
+.desktop_nav_container .mobile_nav_menu { background: rgba(245,251,254,.94); }
+.desktop_nav_container .mobile_nav_menu .mobile_nav_item,
+.desktop_nav_container .mobile_nav_menu .mobile_nav_cta { color: #17384d; }
+.desktop_nav_container .mobile_nav_toggle.open span { background: #17384d; }
+
+/* Light aura: white canvas with restrained blue and white moving ripples. */
+.home_page .care_hero:has(.care_hero_glass) { background: #fff; }
+.home_page .care_hero:has(.care_hero_glass)::before {
+    background:
+        radial-gradient(ellipse at 65% 40%, transparent 24%, rgba(0,0,0,.45) 25%, rgba(37,150,190,.6) 27%, transparent 31%),
+        radial-gradient(ellipse at 45% 60%, transparent 28%, rgba(37,150,190,.5) 29%, rgba(0,0,0,.3) 32%, transparent 36%),
+        radial-gradient(ellipse at 68% 72%, rgba(37,150,190,.12), transparent 42%);
+}
+.care_hero_glass { color: #17384d; background: linear-gradient(125deg, rgba(255,255,255,.5), rgba(255,255,255,.2)); }
+.care_hero_glass h1 { color: #17384d; }
+.care_hero_glass h1 span { color: #2596be; }
+.care_hero_glass .care_hero_description { color: #405966; }
+.care_hero_glass .care_hero_annotation,
+.care_hero_glass .care_hero_insertion svg { color: #2596be; }
+.care_hero_glass .care_hero_button:focus-visible { outline-color: #1d4e89; }
+@media (prefers-reduced-transparency: reduce) {
+    .care_hero_glass { background: #f4faff; }
+}
+
+/* Preserve hero layout without a visible glass container. */
+.care_hero_glass {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    overflow: visible;
+}
+.care_hero_glass::before,
+.care_hero_glass::after { content: none; }
+
+/* Relocate the aura to the How It Works closing invitation. */
+.home_page .care_hero:has(.care_hero_glass) { background: #fff; }
+.home_page .care_hero:has(.care_hero_glass)::before { content: none; animation: none; }
+.consultation_support {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: #061827;
+    padding: 64px clamp(20px, 5vw, 80px);
+    color: #fff;
+}
+.consultation_support::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -45%;
+    background:
+        radial-gradient(ellipse at 65% 40%, transparent 24%, rgba(255,255,255,.8) 25%, rgba(37,150,190,.65) 27%, transparent 30%),
+        radial-gradient(ellipse at 45% 60%, transparent 28%, rgba(37,150,190,.65) 29%, rgba(255,255,255,.4) 32%, transparent 35%),
+        radial-gradient(ellipse at 68% 72%, #2596be, transparent 42%);
+    filter: blur(15px);
+    animation: instacare-aura-drift 10s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+.consultation_support_glass {
+    max-width: 1100px;
+    margin: auto;
+    padding: 56px clamp(22px, 4vw, 64px);
+    border-radius: 32px;
+    background: linear-gradient(125deg, rgba(255,255,255,.22), rgba(255,255,255,.06) 45%, rgba(225,245,250,.12));
+    -webkit-backdrop-filter: blur(16px) saturate(155%);
+    backdrop-filter: blur(16px) saturate(155%);
+    box-shadow: 0 16px 48px rgba(0,12,26,.16);
+}
+.consultation_support_glass .consultation_eyebrow { color: #8bdaf4; }
+.consultation_support_glass > p:not(.consultation_eyebrow) { max-width: 580px; margin: 24px auto 28px; color: #e0edf5; font-size: 16px; line-height: 1.8; }
+@media (prefers-reduced-motion: reduce) {
+    .consultation_support::before { animation: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+    .consultation_support_glass { background: #23465e; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* Inset copyright divider matching the footer's secondary links. */
+.sub_footer { position: relative; border-top: 0; }
+.sub_footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 1px;
+    background: rgba(255,255,255,.22);
+}
+
+/* Copyright and local origin share the bottom footer strip. */
+.sub_footer::before { content: none; }
+.sub_footer {
+    border: 0;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px 30px;
+    text-align: left;
+}
+.sub_footer .made_in_trinidad { margin-left: auto; text-align: right; }
+@media (max-width: 600px) {
+    .sub_footer { flex-wrap: wrap; padding: 16px 20px; font-size: 11px; }
+}
+
+/* Homepage impact figures in the shared animated glass treatment. */
+.care_stats.consultation_support { background: #061827; color: #fff; padding: 64px clamp(20px, 5vw, 80px); }
+.care_stats .consultation_support_glass { padding-block: 48px; }
+.care_stats .consultation_eyebrow { margin-bottom: 32px; }
+.care_stats .care_stats_grid dd { color: #fff; }
+.care_stats .care_stats_grid dt { color: #e0edf5; }
+.care_stats .care_stats_grid > div + div { border-color: rgba(255,255,255,.22); }
+.care_stats .consultation_support_glass > #care-stats-note { margin: 28px auto 0; font-size: 11px; color: #cfdee8; }
+@media (max-width: 600px) {
+    .care_stats.consultation_support { padding: 36px 20px; }
+    .care_stats .consultation_support_glass { padding: 32px 20px; }
+    .care_stats .consultation_eyebrow { margin-bottom: 12px; }
+}
+
+/* Homepage care journey on black, with the availability section last. */
+.home_consultation {
+    max-width: none;
+    margin: 0;
+    background: #000;
+    color: #fff;
+    padding-inline: clamp(24px, 5vw, 96px);
+    font-family: "Montserrat", sans-serif;
+}
+.home_consultation .consultation_content > h2 {
+    margin: 0;
+    font-family: inherit;
+    font-size: clamp(34px, 3.3vw, 52px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -.04em;
+    color: #fff;
+}
+.home_consultation .consultation_content > h2 span { color: #2596be; }
+.home_consultation .consultation_intro,
+.home_consultation .consultation_steps p { color: #c5d3dc; }
+.home_consultation .consultation_launch_note { color: #a9bdc9; }
+.home_consultation .consultation_button_secondary { background: transparent; border-color: #617885; color: #fff; }
+.home_consultation .consultation_button_secondary:hover { background: #1d4e89; }
+
+/* A flowing wave gives the certification panel its own visual rhythm. */
+.certification_section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 64px clamp(20px, 5vw, 80px);
+    background: #061827;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+}
+.certification_section::before,
+.certification_section::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 160%;
+    height: 85%;
+    left: -30%;
+    top: 35%;
+    border-radius: 48% 52% 0 0 / 70% 80% 0 0;
+    background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(37,150,190,.8) 8%, rgba(37,150,190,.12) 60%, transparent);
+    filter: blur(16px);
+    transform: rotate(-9deg);
+    animation: certification-wave 12s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+.certification_section::after {
+    top: 58%;
+    left: -20%;
+    opacity: .6;
+    animation-delay: -6s;
+    animation-duration: 16s;
+    background: linear-gradient(180deg, rgba(37,150,190,.9), rgba(255,255,255,.3) 12%, transparent 65%);
+}
+.certification_glass {
+    max-width: 1100px;
+    margin: auto;
+    padding: 44px clamp(22px, 4vw, 64px);
+    border-radius: 32px;
+    background: linear-gradient(125deg, rgba(255,255,255,.22), rgba(255,255,255,.06) 45%, rgba(225,245,250,.12));
+    -webkit-backdrop-filter: blur(16px) saturate(155%);
+    backdrop-filter: blur(16px) saturate(155%);
+    box-shadow: 0 16px 48px rgba(0,12,26,.16);
+}
+.certification_glass h2 { margin: 0 0 32px; font: 750 clamp(24px, 3vw, 34px)/1.2 "Montserrat", sans-serif; }
+.certification_logos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: center; }
+.certification_logo_placeholder { display: flex; min-height: 100px; flex-direction: column; justify-content: center; align-items: center; gap: 10px; border: 1px dashed rgba(255,255,255,.3); border-radius: 16px; color: #d8eaf4; font-size: 12px; }
+.certification_logo_placeholder > span:first-child { font-size: 32px; line-height: 1; }
+.certification_glass > p { margin: 24px 0 0; color: #d8eaf4; font-size: 11px; }
+@keyframes certification-wave {
+    from { transform: translate(-3%, 10%) rotate(-9deg) scaleY(.85); }
+    to { transform: translate(5%, -14%) rotate(5deg) scaleY(1.2); }
+}
+@media (max-width: 600px) {
+    .certification_section { padding: 36px 20px; }
+    .certification_logos { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .certification_section::before, .certification_section::after { animation: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+    .certification_glass { background: #23465e; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
+/* Swap animation styles: waves for impact figures, rings for certifications. */
+.care_stats.consultation_support::before,
+.care_stats.consultation_support::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 160%;
+    height: 85%;
+    inset: 35% auto auto -30%;
+    border-radius: 48% 52% 0 0 / 70% 80% 0 0;
+    background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(37,150,190,.8) 8%, rgba(37,150,190,.12) 60%, transparent);
+    filter: blur(16px);
+    transform: rotate(-9deg);
+    animation: certification-wave 12s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+.care_stats.consultation_support::after {
+    top: 58%;
+    left: -20%;
+    opacity: .6;
+    animation-delay: -6s;
+    animation-duration: 16s;
+    background: linear-gradient(180deg, rgba(37,150,190,.9), rgba(255,255,255,.3) 12%, transparent 65%);
+}
+.certification_section::before {
+    width: auto;
+    height: auto;
+    inset: -45%;
+    border-radius: 0;
+    background:
+        radial-gradient(ellipse at 65% 40%, transparent 24%, rgba(255,255,255,.8) 25%, rgba(37,150,190,.65) 27%, transparent 30%),
+        radial-gradient(ellipse at 45% 60%, transparent 28%, rgba(37,150,190,.65) 29%, rgba(255,255,255,.4) 32%, transparent 35%),
+        radial-gradient(ellipse at 68% 72%, #2596be, transparent 42%);
+    filter: blur(15px);
+    animation: instacare-aura-drift 10s ease-in-out infinite alternate;
+}
+.certification_section::after { content: none; }
+@media (prefers-reduced-motion: reduce) {
+    .care_stats.consultation_support::before,
+    .care_stats.consultation_support::after,
+    .certification_section::before { animation: none; }
+}
+
+/* Cookie choices share the navigation's glass finish and adaptive labels. */
+.cookie_banner {
+    --cookie-label: #17384d;
+    color: var(--cookie-label);
+    background: linear-gradient(125deg, rgba(255,255,255,.3), rgba(255,255,255,.12) 45%, rgba(225,245,250,.2));
+    border: 0;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(20,60,80,.16);
+    -webkit-backdrop-filter: blur(24px) saturate(155%);
+    backdrop-filter: blur(24px) saturate(155%);
+    animation: none;
+}
+.cookie_banner[data-contrast="light"] { --cookie-label: #fff; }
+.cookie_banner .cookie_banner_copy a { color: var(--cookie-label); }
+.cookie_banner .cookie_button { color: var(--cookie-label); border-color: currentColor; background: rgba(255,255,255,.12); }
+.cookie_banner .cookie_button_accept { background: #2596be; color: #fff; border-color: #2596be; }
+.cookie_banner button:focus-visible,
+.cookie_banner a:focus-visible { outline: 2px solid var(--cookie-label); outline-offset: 4px; }
+@media (prefers-reduced-transparency: reduce) {
+    .cookie_banner { background: #f0f8fb; color: #17384d; --cookie-label: #17384d; -webkit-backdrop-filter: none; backdrop-filter: none; }
+    .cookie_banner[data-contrast="light"] { --cookie-label: #17384d; }
+}
+
+/* Mobile glass drawer and a rounded-square menu control. */
+@media (max-width: 800px) {
+    .desktop_nav_container .mobile_nav_menu {
+        background: linear-gradient(125deg, rgba(255,255,255,.3), rgba(255,255,255,.12) 45%, rgba(225,245,250,.2));
+        -webkit-backdrop-filter: blur(24px) saturate(155%);
+        backdrop-filter: blur(24px) saturate(155%);
+        box-shadow: 0 16px 48px rgba(0,12,26,.2);
+        --drawer-label: #17384d;
+    }
+    .desktop_nav_container .mobile_nav_menu[data-contrast="light"] { --drawer-label: #fff; }
+    .desktop_nav_container .mobile_nav_menu .mobile_nav_item,
+    .desktop_nav_container .mobile_nav_menu .mobile_nav_cta { color: var(--drawer-label); }
+    .desktop_nav_container .mobile_nav_toggle {
+        width: 46px;
+        height: 46px;
+        box-sizing: border-box;
+        border-radius: 12px;
+    }
+    .desktop_nav_container .mobile_nav_toggle.open,
+    .desktop_nav_container .mobile_nav_toggle.open:hover {
+        background: transparent;
+        box-shadow: none;
+        border: 0;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+    .desktop_nav_container:has(.mobile_nav_menu[data-contrast="light"]) .mobile_nav_toggle.open span { background: #fff; }
+    .desktop_nav_container:has(.mobile_nav_menu[data-contrast="dark"]) .mobile_nav_toggle.open span { background: #17384d; }
+}
+@media (prefers-reduced-transparency: reduce) {
+    .desktop_nav_container .mobile_nav_menu { background: #f0f8fb; -webkit-backdrop-filter: none; backdrop-filter: none; }
+    .desktop_nav_container .mobile_nav_menu[data-contrast] { --drawer-label: #17384d; }
+    .desktop_nav_container .mobile_nav_toggle.open span { background: #17384d; }
+}
+
+@media (max-width: 800px) {
+    .desktop_nav_container .mobile_nav_toggle {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+/* Equal-width care journey actions at every screen size. */
+.consultation_actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 14px;
+}
+.consultation_actions > .consultation_button {
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+    padding-inline: clamp(10px, 2vw, 23px);
+}
+
+/* Four impact figures, with a gentle description of patient needs. */
+.care_stats_grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.care_stat_detail { display: block; max-width: 200px; margin: 8px auto 0; font-size: 11px; font-weight: 400; line-height: 1.6; color: #cfdee8; }
+@media (min-width: 601px) and (max-width: 1000px) {
+    .care_stats_grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 0; }
+    .care_stats .care_stats_grid > div:nth-child(3) { border-left: 0; }
+}
+@media (max-width: 600px) {
+    .care_stats_grid { grid-template-columns: 1fr; }
+}
+
+/* Give each statistic room to keep its number and unit together. */
+.care_stats .consultation_support_glass {
+    max-width: 1440px;
+    padding-inline: clamp(20px, 3vw, 44px);
+}
+.care_stats .care_stats_grid { max-width: none; }
+.care_stats .care_stats_grid > div { padding-inline: 16px; }
+.care_stats .care_stats_grid dd {
+    white-space: nowrap;
+    font-size: clamp(30px, 3vw, 46px);
+}
+@media (min-width: 1001px) and (max-width: 1200px) {
+    .care_stats .care_stats_grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 0; }
+    .care_stats .care_stats_grid > div:nth-child(3) { border-left: 0; }
+}
+
+/* Adapted from adamgiebl's new-bird-34 button on Uiverse (MIT).
+   License: licenses/uiverse-button-MIT.txt */
+a.instacare_cta.instacare_cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    min-height: 50px;
+    padding: 12px 62px 12px 20px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 15px;
+    background: #2596be;
+    color: #fff;
+    box-shadow: inset 0 0 1.6em -.6em #1d4e89;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: left;
+    white-space: normal;
+    gap: 0;
+}
+a.instacare_cta .cta_label { color: #fff; }
+a.instacare_cta .cta_icon {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    background: #fff;
+    color: #1d4e89;
+    box-shadow: 1px 1px 8px rgba(29,78,137,.3);
+    transition: width 300ms ease, transform 150ms ease;
+    pointer-events: none;
+}
+a.instacare_cta .cta_icon svg { width: 20px; height: 20px; transition: transform 300ms ease; }
+@media (hover: hover) {
+    a.instacare_cta:hover .cta_icon { width: calc(100% - 10px); }
+    a.instacare_cta:hover .cta_icon svg { transform: translateX(2px); }
+}
+a.instacare_cta:active .cta_icon { transform: scale(.95); }
+a.instacare_cta:focus-visible { outline: 3px solid #2596be; outline-offset: 5px; }
+.consultation_actions > a.instacare_cta { width: 100%; }
+@media (max-width: 440px) {
+    .consultation_actions > a.instacare_cta { font-size: 12px; padding-left: 12px; padding-right: 46px; }
+    .consultation_actions > a.instacare_cta .cta_icon { width: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    a.instacare_cta .cta_icon, a.instacare_cta .cta_icon svg { transition: none; }
+}
+
+/* Navigation CTAs retain their glass finish with the expanding arrow tile. */
+.desktop_nav_container a.instacare_cta.instacare_cta {
+    background: linear-gradient(125deg, rgba(255,255,255,.3), rgba(255,255,255,.12) 45%, rgba(225,245,250,.2));
+    box-shadow: 0 3px 12px rgba(20,60,80,.08);
+    -webkit-backdrop-filter: blur(16px) saturate(155%);
+    backdrop-filter: blur(16px) saturate(155%);
+}
+.desktop_nav_container .desktop_nav_cta .cta_label { color: var(--nav-label); }
+.desktop_nav_container .mobile_nav_cta .cta_label { color: var(--drawer-label); }
+.desktop_nav_container a.instacare_cta .cta_icon {
+    background: rgba(255,255,255,.35);
+    color: var(--nav-label);
+    box-shadow: none;
+}
+.desktop_nav_container .mobile_nav_cta .cta_icon { color: var(--drawer-label); }
+/* Secondary doctor links keep the same grey and black palette while animating. */
+a.consultation_button_secondary.instacare_cta.instacare_cta,
+a.consultation_button_secondary.instacare_cta.instacare_cta:hover {
+    background: #d5d9dd;
+    box-shadow: inset 0 0 1.6em -.6em #a8afb6;
+    color: #17232d;
+}
+a.consultation_button_secondary.instacare_cta .cta_label { color: #17232d; }
+a.consultation_button_secondary.instacare_cta .cta_icon {
+    background: #000;
+    color: #fff;
+    box-shadow: 1px 1px 8px rgba(0,0,0,.2);
+}
+
+/* Simple glass navigation actions, without expanding arrow controls. */
+.desktop_nav_container .desktop_nav_cta,
+.desktop_nav_container .mobile_nav_cta {
+    background: linear-gradient(135deg, rgba(255,255,255,.25), rgba(125,207,182,.12));
+    border: 0;
+    border-radius: 999px;
+    box-shadow: 0 3px 12px rgba(20,60,80,.08);
+}
+.services_page { background: #fff; color: #17384d; font-family: "Montserrat", sans-serif; }
+.services_intro { max-width: 960px; margin: auto; padding: 72px 24px 48px; text-align: center; }
+.services_intro h1 { margin: 0; font: 800 clamp(36px, 5vw, 64px)/1.15 "Montserrat", sans-serif; letter-spacing: -.04em; }
+.services_intro h1 span { color: #2596be; }
+.services_intro > p:last-child { max-width: 700px; margin: 28px auto 0; color: #526570; font-size: 18px; line-height: 1.8; }
+.services_grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; max-width: 1200px; margin: auto; padding: 0 24px 64px; }
+.service_card { background: #edf8fc; border-radius: 28px; padding: clamp(26px, 4vw, 48px); }
+.service_card_mental { background: #eef8f4; }
+.service_number { font-size: 36px; font-weight: 750; color: #2596be; }
+.service_card h2 { margin: 20px 0; font: 750 28px/1.2 "Montserrat", sans-serif; }
+.service_card p, .service_card li { color: #526570; font-size: 15px; line-height: 1.8; }
+.service_card ul { padding-left: 20px; margin-top: 24px; }
+.service_card li + li { margin-top: 10px; }
+.services_next { background: #f7fbfd; text-align: center; padding: 56px 24px 64px; }
+.services_next h2 { font: 750 clamp(26px, 3vw, 36px)/1.3 "Montserrat", sans-serif; }
+.services_next > p { color: #526570; max-width: 600px; margin: 20px auto 28px; line-height: 1.8; }
+.services_next .services_note { font-size: 12px; margin-bottom: 0; }
+@media (max-width: 800px) {
+    .services_grid { grid-template-columns: 1fr; }
+    .services_intro { padding-top: 44px; }
+}
+
+/* Shared interior-page language: white introductions, black chapters, glass invitations. */
+.brand_page { background: #fff; color: #17384d; font-family: "Montserrat", sans-serif; }
+.page_intro { max-width: 1040px; margin: auto; padding: 88px 28px 52px; text-align: center; }
+.page_intro h1 { margin: 0; font: 800 clamp(40px, 5.8vw, 78px)/1.08 "Montserrat", sans-serif; letter-spacing: -.05em; }
+.page_intro > p:last-child { max-width: 720px; margin: 28px auto 0; color: #526570; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.8; }
+.page_intro_action { text-align: center; padding: 0 24px 64px; }
+.page_cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); max-width: 1240px; gap: 24px; padding: 20px 28px 72px; margin: auto; }
+.page_cards article { background: #f4f8fa; border-radius: 28px; padding: 36px; }
+.page_cards h2 { margin: 24px 0 16px; font: 750 25px/1.25 "Montserrat", sans-serif; letter-spacing: -.025em; }
+.page_cards p, .page_plain > p { color: #526570; font-size: 16px; line-height: 1.8; }
+.page_plain { max-width: 900px; margin: auto; padding: 72px 28px; text-align: center; }
+.page_plain h2 { font: 750 clamp(28px, 3vw, 42px)/1.2 "Montserrat", sans-serif; letter-spacing: -.035em; }
+.page_plain > p { margin: 24px auto 28px; max-width: 700px; }
+.page_plain .page_small { font-size: 12px; }
+.journey_step { scroll-margin-top: 100px; background: #fff; padding: 84px 28px; }
+.journey_step_inner { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(32px, 6vw, 100px); max-width: 1200px; margin: auto; }
+.step_art { aspect-ratio: 1.2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; border-radius: 36px; background: linear-gradient(145deg, #f1f9fc, #e1f2f5); color: #2596be; font-size: 16px; font-weight: 650; text-align: center; padding: 24px; box-sizing: border-box; }
+.step_art_number { font-size: clamp(100px, 15vw, 200px); font-weight: 800; line-height: 1; letter-spacing: -.07em; }
+.step_copy h2 { font: 800 clamp(32px, 4vw, 52px)/1.15 "Montserrat", sans-serif; letter-spacing: -.04em; margin: 0 0 24px; }
+.step_copy > p:not(.consultation_eyebrow) { font-size: 17px; line-height: 1.8; color: #526570; margin: 16px 0; }
+.step_dark { background: #000; color: #fff; }
+.step_dark .step_art { background: linear-gradient(145deg, #152c3c, #061827); }
+.step_dark .step_copy > p:not(.consultation_eyebrow) { color: #c5d3dc; }
+.step_dark .step_art { grid-column: 2; grid-row: 1; }
+.step_dark .step_copy { grid-column: 1; grid-row: 1; }
+.journey_callout { position: relative; isolation: isolate; overflow: hidden; background: #061827; color: #fff; text-align: center; padding: 72px clamp(20px, 6vw, 90px); }
+.journey_glass { max-width: 1100px; margin: auto; padding: 58px clamp(24px, 5vw, 72px); border-radius: 32px; background: linear-gradient(125deg, rgba(255,255,255,.22), rgba(255,255,255,.06) 45%, rgba(225,245,250,.12)); -webkit-backdrop-filter: blur(20px) saturate(155%); backdrop-filter: blur(20px) saturate(155%); box-shadow: 0 16px 48px #0002; }
+.journey_glass h2 { font: 800 clamp(30px, 4vw, 52px)/1.15 "Montserrat", sans-serif; letter-spacing: -.04em; margin: 0; }
+.journey_glass > p { color: #dfedf5; max-width: 650px; margin: 26px auto 32px; font-size: 17px; line-height: 1.8; }
+.journey_callout::before { content: ""; position: absolute; z-index: -1; inset: -55%; pointer-events: none; filter: blur(28px); }
+.journey_ribbon::before { background: repeating-linear-gradient(115deg, transparent 0 17%, rgba(37,150,190,.65) 20%, rgba(255,255,255,.45) 22%, transparent 25% 38%); animation: journey-ribbon 14s ease-in-out infinite alternate; }
+.journey_mesh::before { background: radial-gradient(ellipse at 30% 40%, rgba(37,150,190,.9), transparent 35%), radial-gradient(ellipse at 70% 70%, rgba(255,255,255,.4), transparent 30%), radial-gradient(ellipse at 65% 30%, #1d4e89, transparent 40%); animation: journey-mesh 18s ease-in-out infinite alternate; }
+@keyframes journey-ribbon { from { transform: translate(-5%, -6%) rotate(-8deg); } to { transform: translate(7%, 6%) rotate(8deg); } }
+@keyframes journey-mesh { from { transform: translate(-6%, 3%) scale(1); } to { transform: translate(5%, -4%) scale(1.18); } }
+.page_faq { max-width: 900px; padding: 0 28px 72px; margin: auto; }
+.page_faq .faq_item { background: #f4f8fa; border: 0; border-radius: 20px; padding: 24px; margin-bottom: 16px; }
+.page_faq .faq_item p { color: #526570; font-size: 15px; line-height: 1.8; padding-top: 16px; }
+.brand_page .analytics_preferences { text-align: left; }
+@media (min-width: 801px) and (max-width: 1150px) {
+    body:not(.home_page) .desktop_nav { padding-inline: 22px; gap: 16px; }
+    body:not(.home_page) .desktop_nav_items_container { gap: 16px; }
+    body:not(.home_page) .desktop_nav_item { font-size: 11px; }
+}
+@media (max-width: 800px) {
+    .page_intro { padding-top: 56px; }
+    .journey_step { padding: 52px 24px; }
+    .journey_step_inner { grid-template-columns: 1fr; gap: 30px; }
+    .step_copy, .step_dark .step_copy { grid-column: 1; grid-row: 1; }
+    .step_art, .step_dark .step_art { grid-column: 1; grid-row: 2; max-height: 300px; }
+    .journey_callout { padding: 40px 20px; }
+    .journey_glass { padding: 40px 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .journey_callout::before { animation: none; } }
+@media (prefers-reduced-transparency: reduce) { .journey_glass { background: #23465e; -webkit-backdrop-filter: none; backdrop-filter: none; } }

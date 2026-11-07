@@ -1,9 +1,9 @@
 (function () {
-    const CONSENT_KEY = 'limework_analytics_consent_v1';
-    // GA4 web stream for the Limework promotional website.
-    const GOOGLE_ANALYTICS_ID = 'G-C0XJMRX293';
+    const CONSENT_KEY = 'instacare_analytics_consent_v1';
+    // Leave empty until instacare has its own analytics property.
+    const GOOGLE_ANALYTICS_ID = '';
 
-    const CONSENT_COOKIE = 'limework_analytics_allowed';
+    const CONSENT_COOKIE = 'instacare_analytics_allowed';
     const cookieOptions = '; path=/; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : '');
     function hasConsentCookie() {
         return document.cookie.split(';').some(function (entry) {
@@ -38,14 +38,14 @@
         } catch (error) {
             // Keep the choice for this page view when storage is unavailable.
         }
-        window.dispatchEvent(new CustomEvent('limework:analytics-consent', {
+        window.dispatchEvent(new CustomEvent('instacare:analytics-consent', {
             detail: { consent: consentChoice }
         }));
     }
 
     function clearAnalyticsCookies() {
         const domains = ['', window.location.hostname];
-        if (/(^|\.)limeworktt\.com$/.test(location.hostname)) domains.push('limeworktt.com', '.limeworktt.com');
+        if (/(^|\.)instacarett\.com$/.test(location.hostname)) domains.push('instacarett.com', '.instacarett.com');
         const paths = new Set(['/']);
         const parts = location.pathname.split('/').filter(Boolean);
         let path = '';
@@ -54,7 +54,7 @@
             return cookie.split('=')[0].trim();
         }).filter(function (name) { return /^_ga(?:_|$)/.test(name); }));
         names.add('_ga');
-        names.add('_ga_' + GOOGLE_ANALYTICS_ID.slice(2));
+        if (GOOGLE_ANALYTICS_ID) names.add('_ga_' + GOOGLE_ANALYTICS_ID.slice(2));
         names.forEach(function (name) {
             domains.forEach(function (domain) {
                 paths.forEach(function (cookiePath) {
@@ -66,7 +66,7 @@
     }
 
     function disableAnalytics() {
-        window['ga-disable-' + GOOGLE_ANALYTICS_ID] = true;
+        if (GOOGLE_ANALYTICS_ID) window['ga-disable-' + GOOGLE_ANALYTICS_ID] = true;
         if (typeof window.gtag === 'function') window.gtag('consent', 'update', { analytics_storage: 'denied' });
         clearAnalyticsCookies();
     }
@@ -74,7 +74,7 @@
     function loadAnalytics() {
         if (!hasConsentCookie() || !/^G-[A-Z0-9]+$/i.test(GOOGLE_ANALYTICS_ID)) return;
         // Keep local previews out of the live reports.
-        if (!['limeworktt.com', 'www.limeworktt.com', 'limeworktt.github.io'].includes(window.location.hostname)) return;
+        if (!['instacarett.com', 'www.instacarett.com', 'instacarett.github.io'].includes(window.location.hostname)) return;
         window['ga-disable-' + GOOGLE_ANALYTICS_ID] = false;
         if (analyticsStarted) {
             window.gtag('consent', 'update', { analytics_storage: 'granted' });
@@ -96,7 +96,7 @@
 
         const script = document.createElement('script');
         script.async = true;
-        script.dataset.limeworkGoogleAnalytics = 'true';
+        script.dataset.instacareGoogleAnalytics = 'true';
         script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GOOGLE_ANALYTICS_ID);
         document.head.appendChild(script);
     }
@@ -112,7 +112,7 @@
         '<p class="cookie_banner_title"><svg class="cookie_banner_icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.8 13A9 9 0 1 1 11 3.1a4 4 0 0 0 4.9 4.8 4 4 0 0 0 4.9 5.1Z"/><circle cx="8" cy="9" r="1"/><circle cx="7" cy="15" r="1"/><circle cx="13" cy="16" r="1"/><circle cx="12" cy="11" r=".7"/></svg><span>Your Privacy Matters</span></p>',
         '<button class="cookie_banner_toggle" type="button" aria-expanded="false" aria-controls="cookie-banner-description" aria-label="Expand cookie description"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>',
         '</div>',
-        '<p id="cookie-banner-description" hidden>With your permission, instacare uses Google Analytics to understand visits, approximate locations, popular pages and how people find this site. Analytics stays off unless you accept. You can change your choice on the Legal &amp; Policies page.</p>',
+        '<p id="cookie-banner-description" hidden>instacare has not enabled Google Analytics. No analytics tracking runs on this site. You can save your cookie preference below and review it on the Legal &amp; Policies page.</p>',
         '<a href="/legal/">Cookies &amp; Privacy Details</a>',
         '</div>',
         '<div class="cookie_banner_actions">',
@@ -168,6 +168,7 @@
 
     function showBanner(moveFocus) {
         banner.hidden = false;
+        window.dispatchEvent(new Event('overlay-contrast-update'));
         if (moveFocus) banner.querySelector('[data-cookie-choice="accepted"]').focus();
     }
 
@@ -188,13 +189,13 @@
 
     function syncToggle() {
         document.querySelectorAll('[data-analytics-status]').forEach(function (badge) {
-            const enabled = consentChoice === 'accepted';
-            badge.textContent = enabled ? 'Active' : 'Disabled';
+            const enabled = analyticsStarted && consentChoice === 'accepted';
+            badge.textContent = !GOOGLE_ANALYTICS_ID ? 'Not configured' : (enabled ? 'Active' : 'Disabled');
             badge.classList.toggle('policy_status_active', enabled);
             badge.classList.toggle('policy_status_disabled', !enabled);
         });
         document.querySelectorAll('[data-analytics-toggle]').forEach(function (toggle) {
-            const enabled = consentChoice === 'accepted';
+            const enabled = analyticsStarted && consentChoice === 'accepted';
             toggle.setAttribute('aria-checked', String(enabled));
             toggle.querySelector('.analytics_switch_state').textContent = enabled ? 'On' : 'Off';
         });
